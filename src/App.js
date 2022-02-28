@@ -1,3 +1,4 @@
+import logo from "./logo.svg";
 import "./App.css";
 import { QrReader } from "react-qr-reader";
 import { useState } from "react";
@@ -8,10 +9,10 @@ function App() {
   const [address, setAddress] = useState("");
 
   return (
-    <div className="App">
+    <div className="app">
+      <img src={logo} alt="MiamiCoin Logo" className="app-logo" />
       <h1>Proof of Hodl Demo</h1>
-      <p>Scan the Stacks address QR code below!</p>
-      <hr />
+      <p>Scan a Stacks address via QR code below!</p>
       <QrReader
         constraints={{ facingMode: "environment" }}
         onResult={(result, error) => {
@@ -24,9 +25,8 @@ function App() {
             });
           }
         }}
-        style={{ width: "100%" }}
+        className="qr-reader"
       />
-      <hr />
       <div className="hodl">
         {address && (
           <p className="hodl-dark">

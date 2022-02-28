@@ -8,6 +8,12 @@ compatibility_date = "2022-02-28"
 bucket = "./build"
 entry-point = "workers-site"
 
+[build]
+command = "npm install && npm run build"
+
+[build.upload]
+format = "service-worker"
+
 [env.production]
 name = "proof-of-hodl-demo-production"
 route = "proof-of-hodl-demo.citycoins.co/*"

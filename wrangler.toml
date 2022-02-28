@@ -1,0 +1,14 @@
+name = "proof-of-hodl-demo"
+type = "webpack"
+account_id = "6f54e90da6d1b280fe00a153cb394c68"
+workers_dev = true
+compatibility_date = "2022-02-28"
+
+[site]
+bucket = "./build"
+entry-point = "workers-site"
+
+[env.production]
+name = "proof-of-hodl-demo-production"
+route = "proof-of-hodl-demo.citycoins.co/*"
+zone_id = "3e5041a8cc83842af0c2734fe6b33adc"

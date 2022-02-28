@@ -3,25 +3,42 @@ import { QrReader } from "react-qr-reader";
 import { useState } from "react";
 
 function App() {
-  const [data, setData] = useState("No result");
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(null);
+  const [address, setAddress] = useState("");
 
   return (
     <div className="App">
-      <p>Proof of Hodl Demo App</p>
+      <h1>Proof of Hodl Demo</h1>
+      <p>Scan the Stacks address QR code below!</p>
+      <hr />
       <QrReader
         constraints={{ facingMode: "environment" }}
         onResult={(result, error) => {
           if (!!result) {
-            setData("loading...");
-            checkProofOfHodl(result?.text).then((answer) => setData(answer));
-          }
-          if (!!error) {
-            console.info(error);
+            setLoading(true);
+            setAddress(result?.text);
+            checkProofOfHodl(result?.text).then((answer) => {
+              setData(answer);
+              setLoading(false);
+            });
           }
         }}
         style={{ width: "100%" }}
       />
-      <p>{data}</p>
+      <hr />
+      <div className="hodl">
+        {address && (
+          <p className="hodl-dark">
+            {address.substring(0, 5)}...{address.substring(address.length - 5)}
+          </p>
+        )}
+        {!loading && (
+          <p className={data ? "hodl-success" : "hodl-error"}>
+            {data ? "Access Granted" : "Access Denied"}
+          </p>
+        )}
+      </div>
     </div>
   );
 }
@@ -33,6 +50,5 @@ async function checkProofOfHodl(address) {
     `https://citycoins-api.citycoins.workers.dev/tools/proof-of-hodl/mia/${address}`
   );
   const data = await response.json();
-  console.log(`data: ${JSON.stringify(data)}`);
-  return data.value.toString();
+  return data.value;
 }

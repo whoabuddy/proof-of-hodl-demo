@@ -1,3 +1,21 @@
 .App {
   text-align: center;
 }
+
+.hodl {
+  color: white;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.hodl-dark {
+  color: black;
+}
+
+.hodl-success {
+  background-color: green;
+}
+
+.hodl-error {
+  background-color: red;
+}

@@ -1,10 +1,12 @@
 .app {
+  max-height: 100vh;
   text-align: center;
+  padding: 0;
 }
 
 .app-logo {
-  padding: 1em;
-  height: 10vmin;
+  padding: 0.5em;
+  height: 10vmax;
   pointer-events: none;
 }
 
@@ -16,15 +18,18 @@
 
 @keyframes app-logo-spin {
   from {
-    transform: rotate3d(0, 0, 0, 0deg);
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(360deg);
   }
   to {
-    transform: rotate3d(1, 1, 1, 360deg);
+    transform: rotate(360deg);
   }
 }
 
 .qr-reader {
-  width: 100%;
+  width: 75vw;
   max-width: 600px;
   margin: 0 auto;
 }
@@ -33,6 +38,7 @@
   color: white;
   font-weight: bold;
   font-size: 2em;
+  min-height: 10vh;
 }
 
 .hodl-dark {

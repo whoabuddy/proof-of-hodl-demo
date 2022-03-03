@@ -47,7 +47,7 @@ export default App;
 
 async function checkProofOfHodl(address) {
   const response = await fetch(
-    `https://citycoins-api.citycoins.workers.dev/tools/proof-of-hodl/mia/${address}`
+    `https://api.citycoins.co/tools/proof-of-hodl/mia/${address}`
   );
   const data = await response.json();
   return data.value;
